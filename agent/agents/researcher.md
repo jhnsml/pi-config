@@ -1,7 +1,7 @@
 ---
 name: researcher
 description: Primary-source web researcher for concise decision briefs
-tools: read, write, ax, web_search
+tools: read, write, ax, web_search, fetch_content, get_search_content
 thinking: high
 system-prompt: append
 spawning: false

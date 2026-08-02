@@ -1,7 +1,7 @@
 ---
 name: context-builder
 description: Builds implementation-ready requirements, code, and validation context
-tools: read, grep, find, ls, bash, write, ax, web_search
+tools: read, grep, find, ls, bash, write, ax, web_search, fetch_content, get_search_content
 thinking: high
 system-prompt: append
 spawning: false
