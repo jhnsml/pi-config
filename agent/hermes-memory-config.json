@@ -1,0 +1,21 @@
+{
+  "memoryMode": "policy-only",
+  "memoryPolicyStyle": "compact",
+  "sessionSearch": {
+    "variant": "legacy"
+  },
+  "llmModelOverride": "opencode-go/deepseek-v4-flash",
+  "llmThinkingOverride": "off",
+  "nudgeInterval": 20,
+  "nudgeToolCalls": 30,
+  "reviewRecentMessages": 24,
+  "reviewEnabled": true,
+  "reviewTransport": "direct",
+  "memoryOverflowStrategy": "auto-consolidate",
+  "correctionDetection": true,
+  "consolidationTimeoutMs": 60000,
+  "flushOnCompact": true,
+  "flushOnShutdown": true,
+  "flushMinTurns": 8,
+  "flushRecentMessages": 30
+}

@@ -1,0 +1,31 @@
+# OS junk
+.DS_Store
+
+# Secrets / auth state
+agent/auth.json
+agent/models-store.json
+
+# Sessions, memory, logs, databases
+agent/sessions/
+agent/projects-memory/
+agent/pi-hermes-memory/
+agent/usage-data/
+agent/run-history.jsonl
+agent/.pi-hermes-locks.sqlite
+interview-sessions.json
+pi-acp/
+.pi-subagents/
+
+# Machine-local state (contains absolute personal paths)
+agent/trust.json
+agent/mcp-onboarding.json
+agent/mcp-cache.json
+agent/migration-backups/
+
+# Large / regenerable artifacts
+agent/npm/node_modules/
+agent/git/
+models/
+
+# Broken machine-specific symlink
+agent/disabled-agent-browser-legacy

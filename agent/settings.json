@@ -1,0 +1,129 @@
+{
+  "lastChangelogVersion": "0.83.0",
+  "enableSkillCommands": true,
+  "retry": {
+    "enabled": true,
+    "maxRetries": 3,
+    "baseDelayMs": 2000,
+    "provider": {
+      "maxRetries": 0,
+      "maxRetryDelayMs": 60000
+    }
+  },
+  "quietStartup": true,
+  "defaultProvider": "opencode-go",
+  "defaultModel": "kimi-k3",
+  "enabledModels": [
+    "openai-codex/gpt-5.6-sol",
+    "openai-codex/gpt-5.6-luna",
+    "openai-codex/gpt-5.6-terra",
+    "openai-codex/gpt-5.5",
+    "openai-codex/gpt-5.4-mini",
+    "opencode-go/kimi-k3",
+    "opencode-go/deepseek-v4-flash",
+    "opencode-go/deepseek-v4-pro",
+    "opencode-go/qwen3.7-plus"
+  ],
+  "skills": ["~/.agent/skills", "~/.pi/agent/skills"],
+  "defaultThinkingLevel": "max",
+  "packages": [
+    "npm:@aliou/pi-guardrails@0.15.0",
+    "npm:pi-skill-palette@1.1.0",
+    "npm:@sherif-fanous/pi-catppuccin@0.2.0",
+    "npm:pi-subagents@0.35.1",
+    "npm:pi-autoresearch@1.6.2",
+    {
+      "source": "npm:pi-web-access@0.13.0",
+      "extensions": [],
+      "skills": []
+    },
+    "npm:pi-smart-fetch@0.3.12",
+    "npm:@plannotator/pi-extension",
+    "npm:pi-mcp-adapter@2.11.0",
+    "npm:@ogulcancelik/pi-herdr",
+    "npm:pi-hermes-memory@0.8.2",
+    "npm:pi-agent-browser-native@0.2.71",
+    "npm:@observal/pi-insights@1.2.3",
+    "git:github.com/jhnsml/pi-ax"
+  ],
+  "subagents": {
+    "defaultModel": "openai-codex/gpt-5.6-sol",
+    "agentOverrides": {
+      "oracle": {
+        "model": "openai-codex/gpt-5.6-sol",
+        "thinking": "high",
+        "defaultContext": "fork",
+        "acceptanceRole": "read-only"
+      },
+      "reviewer": {
+        "model": "openai-codex/gpt-5.6-sol"
+      },
+      "planner": {
+        "model": "openai-codex/gpt-5.6-sol"
+      },
+      "worker": {
+        "model": "opencode-go/kimi-k3",
+        "fallbackModels": [
+          "openai-codex/gpt-5.6-luna",
+          "opencode-go/deepseek-v4-flash"
+        ]
+      },
+      "scout": {
+        "model": "opencode-go/deepseek-v4-flash",
+        "fallbackModels": ["openai-codex/gpt-5.6-luna", "opencode-go/kimi-k3"]
+      },
+      "researcher": {
+        "model": "opencode-go/deepseek-v4-flash",
+        "fallbackModels": ["openai-codex/gpt-5.6-luna", "opencode-go/kimi-k3"]
+      },
+      "context-builder": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "fallbackModels": [
+          "opencode-go/deepseek-v4-flash",
+          "opencode-go/kimi-k3"
+        ]
+      },
+      "delegate": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "fallbackModels": [
+          "opencode-go/deepseek-v4-flash",
+          "opencode-go/kimi-k3"
+        ]
+      }
+    },
+    "watchdog": {
+      "enabled": false,
+      "main": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "high"
+      }
+    }
+  },
+  "voice": {
+    "version": 2,
+    "enabled": true,
+    "language": "en",
+    "scope": "global",
+    "backend": "local",
+    "localModel": "parakeet-v3",
+    "onboarding": {
+      "completed": true,
+      "schemaVersion": 2,
+      "completedAt": "2026-03-18T20:59:48.968Z",
+      "source": "migration"
+    }
+  },
+  "transport": "auto",
+  "theme": "catppuccin-frappe",
+  "steeringMode": "one-at-a-time",
+  "followUpMode": "one-at-a-time",
+  "hideThinkingBlock": false,
+  "showCacheMissNotices": true,
+  "enableInstallTelemetry": true,
+  "defaultProjectTrust": "ask",
+  "doubleEscapeAction": "tree",
+  "treeFilterMode": "default",
+  "compaction": {
+    "enabled": true
+  }
+}

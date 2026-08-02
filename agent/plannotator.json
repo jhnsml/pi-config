@@ -1,0 +1,32 @@
+{
+  "defaults": {
+    "model": {
+      "provider": "openai-codex",
+      "id": "gpt-5.6-sol"
+    },
+    "thinking": "high"
+  },
+  "phases": {
+    "planning": {
+      "model": {
+        "provider": "openai-codex",
+        "id": "gpt-5.6-sol"
+      },
+      "thinking": "high"
+    },
+    "executing": {
+      "model": {
+        "provider": "opencode-go",
+        "id": "kimi-k3"
+      },
+      "thinking": "high"
+    },
+    "reviewing": {
+      "model": {
+        "provider": "openai-codex",
+        "id": "gpt-5.6-terra"
+      },
+      "thinking": "high"
+    }
+  }
+}

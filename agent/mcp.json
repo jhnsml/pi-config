@@ -1,0 +1,26 @@
+{
+  "mcpServers": {
+    "oak": {
+      "url": "https://oak.headout.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${OAK_TOKEN}"
+      }
+    },
+    "paper": {
+      "url": "http://127.0.0.1:29979/mcp"
+    },
+    "stitch": {
+      "type": "remote",
+      "url": "https://stitch.googleapis.com/mcp",
+      "enabled": false,
+      "headers": {
+        "X-Goog-Api-Key": "${STITCH_API_KEY}"
+      }
+    }
+  },
+  "imports": [
+    "cursor",
+    "claude-code",
+    "claude-desktop"
+  ]
+}
