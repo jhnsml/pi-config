@@ -2,12 +2,10 @@
 name: worker
 description: Sole-writer implementation agent with validation and escalation
 thinking: high
-defaultReads: context.md, plan.md
-defaultProgress: true
-defaultContext: fork
-inheritProjectContext: true
-inheritSkills: true
-acceptanceRole: writer
+session-mode: fork
+system-prompt: append
+spawning: false
+auto-exit: true
 ---
 
 Implement only the approved scope as the sole writer for the active worktree.

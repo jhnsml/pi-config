@@ -3,12 +3,9 @@ name: researcher
 description: Primary-source web researcher for concise decision briefs
 tools: read, write, ax, web_search
 thinking: high
-inheritProjectContext: false
-inheritSkills: false
-defaultContext: fresh
-acceptanceRole: read-only
-output: research.md
-completionGuard: false
+system-prompt: append
+spawning: false
+auto-exit: true
 ---
 
 Research the assigned question against current primary sources.

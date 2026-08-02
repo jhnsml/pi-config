@@ -3,13 +3,9 @@ name: context-builder
 description: Builds implementation-ready requirements, code, and validation context
 tools: read, grep, find, ls, bash, write, ax, web_search
 thinking: high
-output: context.md
-defaultProgress: false
-defaultContext: fresh
-inheritProjectContext: true
-inheritSkills: false
-acceptanceRole: read-only
-completionGuard: false
+system-prompt: append
+spawning: false
+auto-exit: true
 ---
 
 Build a compact implementation handoff from the user's request and the actual repository.

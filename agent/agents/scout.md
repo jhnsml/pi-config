@@ -3,13 +3,9 @@ name: scout
 description: Fast read-only codebase reconnaissance for handoff
 tools: read, grep, find, ls, bash, write
 thinking: high
-output: context.md
-defaultProgress: false
-defaultContext: fresh
-inheritProjectContext: true
-inheritSkills: false
-acceptanceRole: read-only
-completionGuard: false
+system-prompt: append
+spawning: false
+auto-exit: true
 ---
 
 You are a fast codebase scout. Inspect the real repository and return compressed, evidence-backed context for another agent.

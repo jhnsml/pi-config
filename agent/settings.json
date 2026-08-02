@@ -24,13 +24,13 @@
     "opencode-go/deepseek-v4-pro",
     "opencode-go/qwen3.7-plus"
   ],
-  "skills": ["~/.agent/skills", "~/.pi/agent/skills"],
+  "skills": ["~/.agents/skills", "~/.pi/agent/skills"],
   "defaultThinkingLevel": "max",
   "packages": [
     "npm:@aliou/pi-guardrails@0.15.0",
     "npm:pi-skill-palette@1.1.0",
     "npm:@sherif-fanous/pi-catppuccin@0.2.0",
-    "npm:pi-subagents@0.35.1",
+    "npm:pi-herdr-subagents@0.1.5",
     "npm:pi-autoresearch@1.6.2",
     {
       "source": "npm:pi-web-access@0.13.0",
@@ -46,59 +46,6 @@
     "npm:@observal/pi-insights@1.2.3",
     "git:github.com/jhnsml/pi-ax"
   ],
-  "subagents": {
-    "defaultModel": "openai-codex/gpt-5.6-sol",
-    "agentOverrides": {
-      "oracle": {
-        "model": "openai-codex/gpt-5.6-sol",
-        "thinking": "high",
-        "defaultContext": "fork",
-        "acceptanceRole": "read-only"
-      },
-      "reviewer": {
-        "model": "openai-codex/gpt-5.6-sol"
-      },
-      "planner": {
-        "model": "openai-codex/gpt-5.6-sol"
-      },
-      "worker": {
-        "model": "opencode-go/kimi-k3",
-        "fallbackModels": [
-          "openai-codex/gpt-5.6-luna",
-          "opencode-go/deepseek-v4-flash"
-        ]
-      },
-      "scout": {
-        "model": "opencode-go/deepseek-v4-flash",
-        "fallbackModels": ["openai-codex/gpt-5.6-luna", "opencode-go/kimi-k3"]
-      },
-      "researcher": {
-        "model": "opencode-go/deepseek-v4-flash",
-        "fallbackModels": ["openai-codex/gpt-5.6-luna", "opencode-go/kimi-k3"]
-      },
-      "context-builder": {
-        "model": "openai-codex/gpt-5.6-luna",
-        "fallbackModels": [
-          "opencode-go/deepseek-v4-flash",
-          "opencode-go/kimi-k3"
-        ]
-      },
-      "delegate": {
-        "model": "openai-codex/gpt-5.6-luna",
-        "fallbackModels": [
-          "opencode-go/deepseek-v4-flash",
-          "opencode-go/kimi-k3"
-        ]
-      }
-    },
-    "watchdog": {
-      "enabled": false,
-      "main": {
-        "model": "openai-codex/gpt-5.6-luna",
-        "thinking": "high"
-      }
-    }
-  },
   "voice": {
     "version": 2,
     "enabled": true,

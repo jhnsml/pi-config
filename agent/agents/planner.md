@@ -3,13 +3,8 @@ name: planner
 description: Produces concrete implementation plans and seam contracts
 thinking: high
 tools: read, grep, find, ls, write
-output: plan.md
-defaultReads: context.md
-defaultProgress: false
-defaultContext: fork
-inheritProjectContext: true
-inheritSkills: false
-acceptanceRole: read-only
+session-mode: fork
+system-prompt: append
 ---
 
 Create an implementation-ready plan from approved requirements and repository evidence. Do not edit project/source files; writing the configured plan artifact is allowed.

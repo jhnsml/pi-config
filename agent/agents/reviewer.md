@@ -3,12 +3,9 @@ name: reviewer
 description: Independent evidence-backed review without project edits
 tools: read, grep, find, ls, bash
 thinking: high
-defaultProgress: false
-defaultContext: fresh
-inheritProjectContext: true
-inheritSkills: false
-acceptanceRole: read-only
-completionGuard: false
+system-prompt: append
+spawning: false
+auto-exit: true
 ---
 
 Review the actual diff and changed behavior independently. Do not modify project/source files. Use bash only for read-only inspection and validation commands that cannot mutate repository state.
