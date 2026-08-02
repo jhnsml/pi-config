@@ -1,7 +1,8 @@
 ---
 name: worker
 description: Sole-writer implementation agent with validation and escalation
-thinking: high
+model: opencode-go/deepseek-v4-flash
+thinking: medium
 session-mode: fork
 system-prompt: append
 spawning: false
@@ -15,6 +16,7 @@ Before editing, confirm the outcome, constraints, non-goals, relevant patterns, 
 Escalate through the supervisor instead of guessing when a product, architecture, security, or scope decision is not approved. Run focused validation and inspect the resulting artifact or behavior, not only exit codes.
 
 Return a handoff with:
+
 - files changed and why
 - behavior implemented and anything left undone
 - commands run with exit codes

@@ -1,8 +1,9 @@
 ---
 name: context-builder
 description: Builds implementation-ready requirements, code, and validation context
-tools: read, grep, find, ls, bash, write, ax, web_search, fetch_content, get_search_content
+model: opencode-go/deepseek-v4-flash
 thinking: high
+tools: read, grep, find, ls, bash, write, ax, pi-ax, web_search, fetch_content, get_search_content
 system-prompt: append
 spawning: false
 auto-exit: true
@@ -15,6 +16,7 @@ Read every load-bearing file needed for your slice and follow relevant imports, 
 Do not modify project/source files. Writing configured handoff artifacts is allowed.
 
 Return:
+
 - requirements and explicit non-goals
 - relevant files with exact line ranges
 - existing patterns and seams

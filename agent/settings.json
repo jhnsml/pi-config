@@ -11,8 +11,8 @@
     }
   },
   "quietStartup": true,
-  "defaultProvider": "opencode-go",
-  "defaultModel": "kimi-k3",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.6-luna",
   "enabledModels": [
     "openai-codex/gpt-5.6-sol",
     "openai-codex/gpt-5.6-luna",
@@ -25,7 +25,7 @@
     "opencode-go/qwen3.7-plus"
   ],
   "skills": ["~/.agents/skills", "~/.pi/agent/skills"],
-  "defaultThinkingLevel": "max",
+  "defaultThinkingLevel": "medium",
   "packages": [
     "npm:@aliou/pi-guardrails@0.15.0",
     "npm:pi-skill-palette@1.1.0",
