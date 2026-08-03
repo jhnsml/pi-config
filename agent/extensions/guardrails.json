@@ -1,9 +1,203 @@
 {
-  "applyBuiltinDefaults": true,
-  "version": "0.9.0-20260327",
-  "onboarding": {
-    "completed": true,
-    "completedAt": "2026-04-24T07:24:13.566Z",
-    "version": "0.9.0-20260327"
+  "$schema": "https://unpkg.com/@aliou/pi-guardrails@0.15.0/schema.json",
+  "permissionGate": {
+    "allowedPatterns": [
+      {
+        "pattern": "rm -rf",
+        "description": "Allow recursive force deletes; protected-file policies still apply"
+      }
+    ],
+    "patterns": [
+      {
+        "pattern": "terraform apply",
+        "description": "Terraform infrastructure changes"
+      },
+      {
+        "pattern": "terraform destroy",
+        "description": "Terraform infrastructure destruction"
+      },
+      {
+        "pattern": "kubectl delete",
+        "description": "Kubernetes resource deletion"
+      },
+      {
+        "pattern": "docker system prune",
+        "description": "Docker system cleanup"
+      },
+      {
+        "pattern": "git push .*(-f\\b|--force(?!-with-lease)|--force-with-lease)",
+        "regex": true,
+        "description": "Git force push (any variant: --force, --force-with-lease, -f)"
+      },
+      {
+        "pattern": "npm publish",
+        "description": "NPM package publishing"
+      },
+      {
+        "pattern": "yarn publish",
+        "description": "Yarn package publishing"
+      },
+      {
+        "pattern": "pnpm publish",
+        "description": "PNPM package publishing"
+      },
+      {
+        "pattern": "aws s3 rm",
+        "description": "AWS S3 object deletion"
+      },
+      {
+        "pattern": "aws iam",
+        "description": "AWS IAM permission changes"
+      },
+      {
+        "pattern": "aws ec2 terminate-instances",
+        "description": "AWS EC2 instance termination"
+      }
+    ]
+  },
+  "version": "0.13.0-20260619",
+  "policies": {
+    "rules": [
+      {
+        "id": "secret-env-files",
+        "name": "Secret env files",
+        "description": "Block .env files and variants",
+        "patterns": [
+          {
+            "pattern": ".env"
+          },
+          {
+            "pattern": ".env.*"
+          }
+        ],
+        "allowedPatterns": [
+          {
+            "pattern": ".env.example"
+          },
+          {
+            "pattern": ".env.sample"
+          },
+          {
+            "pattern": ".env.test"
+          },
+          {
+            "pattern": "*.example.env"
+          },
+          {
+            "pattern": "*.sample.env"
+          },
+          {
+            "pattern": "*.test.env"
+          }
+        ],
+        "protection": "noAccess",
+        "onlyIfExists": true,
+        "enabled": true
+      },
+      {
+        "id": "regex-env",
+        "name": "Regex env files",
+        "description": "Regex example for env files with writable example, sample, and test variants",
+        "patterns": [
+          {
+            "pattern": "^\\.env(\\..+)?$",
+            "regex": true
+          }
+        ],
+        "allowedPatterns": [
+          {
+            "pattern": "^\\.env\\.(example|sample|test)$",
+            "regex": true
+          },
+          {
+            "pattern": "^.*\\.(example|sample|test)\\.env$",
+            "regex": true
+          }
+        ],
+        "protection": "noAccess",
+        "onlyIfExists": true,
+        "enabled": true
+      },
+      {
+        "id": "ssh-keys",
+        "name": "SSH keys",
+        "description": "Block SSH private key files",
+        "patterns": [
+          {
+            "pattern": "*.pem"
+          },
+          {
+            "pattern": "*_rsa"
+          },
+          {
+            "pattern": "*_ed25519"
+          }
+        ],
+        "allowedPatterns": [
+          {
+            "pattern": "*.pub"
+          }
+        ],
+        "protection": "noAccess",
+        "onlyIfExists": true,
+        "enabled": true
+      },
+      {
+        "id": "aws-credentials",
+        "name": "AWS credentials",
+        "description": "Block AWS credentials and config files",
+        "patterns": [
+          {
+            "pattern": ".aws/credentials"
+          },
+          {
+            "pattern": ".aws/config"
+          }
+        ],
+        "protection": "noAccess",
+        "onlyIfExists": true,
+        "enabled": true
+      },
+      {
+        "id": "k8s-secrets",
+        "name": "Kubernetes secrets",
+        "description": "Block kubectl config and secrets",
+        "patterns": [
+          {
+            "pattern": ".kube/config"
+          },
+          {
+            "pattern": "*kubeconfig*"
+          }
+        ],
+        "protection": "noAccess",
+        "onlyIfExists": true,
+        "enabled": true
+      },
+      {
+        "id": "certificates",
+        "name": "Certificates",
+        "description": "Block certificate and key files",
+        "patterns": [
+          {
+            "pattern": "*.crt"
+          },
+          {
+            "pattern": "*.key"
+          },
+          {
+            "pattern": "*.p12"
+          }
+        ],
+        "allowedPatterns": [
+          {
+            "pattern": "*.csr"
+          }
+        ],
+        "protection": "noAccess",
+        "onlyIfExists": true,
+        "enabled": true
+      }
+    ]
   }
 }
