@@ -1,7 +1,7 @@
 ---
 name: worker
 description: Sole-writer implementation agent with validation and escalation
-model: opencode-go/deepseek-v4-flash
+model: opencode-go/kimi-k3
 thinking: medium
 session-mode: fork
 system-prompt: append

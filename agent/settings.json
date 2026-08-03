@@ -25,7 +25,6 @@
     "opencode-go/qwen3.7-plus"
   ],
   "skills": ["~/.agents/skills", "~/.pi/agent/skills"],
-  "defaultThinkingLevel": "medium",
   "packages": [
     "npm:@aliou/pi-guardrails@0.15.0",
     "npm:pi-skill-palette@1.1.0",
@@ -72,5 +71,6 @@
   "treeFilterMode": "default",
   "compaction": {
     "enabled": true
-  }
+  },
+  "defaultThinkingLevel": "off"
 }
