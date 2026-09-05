@@ -9,6 +9,12 @@
     "paper": {
       "url": "http://127.0.0.1:29979/mcp"
     },
+    "delphi": {
+      "url": "https://delphi.headout.com/tools/mcp",
+      "headers": {
+        "Authorization": "Bearer ${DELPHI_API_KEY}"
+      }
+    },
     "stitch": {
       "type": "remote",
       "url": "https://stitch.googleapis.com/mcp",

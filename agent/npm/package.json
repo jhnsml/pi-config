@@ -5,16 +5,14 @@
     "@aliou/pi-guardrails": "^0.15.0",
     "@observal/pi-insights": "^1.2.3",
     "@ogulcancelik/pi-herdr": "^0.4.0",
-    "@plannotator/pi-extension": "^0.25.1",
+    "@plannotator/pi-extension": "^0.27.8",
     "@sherif-fanous/pi-catppuccin": "^0.2.0",
     "pi-agent-browser-native": "^0.2.71",
     "pi-autoresearch": "^1.6.2",
     "pi-herdr-subagents": "^0.1.5",
     "pi-hermes-memory": "^0.8.2",
-    "pi-mcp-adapter": "^2.11.0",
+    "pi-mcp-adapter": "^2.31.0",
     "pi-skill-palette": "^1.1.0",
-    "pi-smart-fetch": "^0.3.12",
-    "pi-subagents": "^0.35.1",
-    "pi-web-access": "^0.13.0"
+    "pi-smart-fetch": "^0.3.17"
   }
 }

@@ -2,6 +2,12 @@
 .DS_Store
 
 # Secrets / auth state
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
 agent/auth.json
 agent/models-store.json
 
@@ -16,8 +22,9 @@ interview-sessions.json
 pi-acp/
 .pi-subagents/
 
-# Machine-local state (contains absolute personal paths)
+# Machine-local and installer-managed state
 agent/trust.json
+agent/extensions/herdr-agent-state.ts
 agent/mcp-onboarding.json
 agent/mcp-cache.json
 agent/migration-backups/
@@ -25,6 +32,7 @@ agent/migration-backups/
 # Large / regenerable artifacts
 agent/npm/node_modules/
 agent/git/
+agent/research/
 models/
 
 # Broken machine-specific symlink

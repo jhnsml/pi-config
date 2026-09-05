@@ -1,41 +1,64 @@
 # pi-config
 
-Version-controlled configuration for [pi](https://pi.dev), the coding agent. This repository is the contents of `~/.pi`, minus secrets, sessions, memory stores, logs, caches, and large regenerable artifacts.
+Opinionated, version-controlled configuration for [Pi](https://pi.dev). The repository contains portable configuration and extension manifests; credentials, sessions, memory stores, logs, caches, and downloaded artifacts stay local.
+
+This is a starter configuration, not a zero-dependency preset. Review `agent/settings.json` and `agent/mcp.json` before adopting it: the selected models, editor, MCP servers, and optional extensions reflect this setup.
 
 ## Layout
 
-- `agent/AGENTS.md` — global agent instructions
-- `agent/settings.json` — pi settings: models, packages, subagent model defaults live in `agent/pi-herdr-subagents.config.json` (see below)
-- `agent/models.json` — custom provider/model definitions (API keys via env vars)
-- `agent/mcp.json` — MCP servers (tokens via env vars)
-- `agent/plannotator.json`, `agent/hermes-memory-config.json` — extension configs
-- `agent/agents/` — global subagent definitions (pi-herdr-subagents frontmatter)
-- `agent/extensions/` — local extensions (bash-tools, guardrails, herdr integration)
-- `agent/skills/` — global skills
-- `agent/npm/package.json` + `package-lock.json` — installed pi packages (node_modules excluded)
-- `agent/pi-herdr-subagents.config.json` — model defaults for pi-herdr-subagents (symlinked into the package dir, see below)
+- `agent/AGENTS.md` — global agent instructions.
+- `agent/settings.json` — Pi preferences, model defaults, and pinned packages.
+- `agent/mcp.json` — lazy MCP servers and host-config imports; credentials use environment variables.
+- `agent/plannotator.json` and `agent/hermes-memory-config.json` — extension-specific settings.
+- `agent/agents/` — global definitions for `pi-herdr-subagents`.
+- `agent/extensions/guardrails.json` — shared safety policy.
+- `agent/npm/package.json` and `package-lock.json` — reproducible npm package installation; `node_modules` is excluded.
 
-## Deliberately excluded (see `.gitignore`)
+There is intentionally no `agent/models.json`. Pi already provides the enabled OpenAI Codex and OpenCode Go model catalogs. Add `models.json` only for a custom provider, proxy, local model server, or built-in model override.
 
-- `agent/auth.json`, `agent/models-store.json` — credentials / provider state
-- `agent/sessions/`, `agent/projects-memory/`, `agent/pi-hermes-memory/`, `agent/usage-data/`, `*.sqlite`, `run-history.jsonl`, `interview-sessions.json`, `pi-acp/`, `.pi-subagents/` — sessions, memory, logs, databases
-- `agent/trust.json`, `agent/mcp-onboarding.json`, `agent/mcp-cache.json`, `agent/migration-backups/` — machine-local state with absolute paths
-- `agent/npm/node_modules/`, `agent/git/`, `models/` — large, regenerable (npm install / pi package sync / voice model download)
+Global skills are loaded from `~/.agents/skills`, which is a separate prerequisite and is not copied by this repository.
 
-## Restore on a new machine
+## Install on a new machine
 
-1. Clone to `~/.pi`
-2. `cd ~/.pi/agent/npm && npm install` (or let pi sync packages from `settings.json`)
-3. Recreate the pi-herdr-subagents config symlink:
+1. Install Pi, Node.js/npm, [Herdr](https://herdr.dev), and the [`ax` CLI](https://github.com/yusukebe/ax/releases) v0.1.23 or newer. The `pi-ax` package registers the native Pi tool, but delegates execution to this CLI.
+2. Clone this repository to `~/.pi`. If `~/.pi` already exists, back it up and merge the reviewed files instead of overwriting it.
+3. Install Herdr's generated Pi integration:
+
    ```bash
-   ln -sf ../../../pi-herdr-subagents.config.json \
-     ~/.pi/agent/npm/node_modules/pi-herdr-subagents/config.json
+   herdr integration install pi
    ```
-4. Set env vars referenced by configs (e.g. `DEEPSEEK_API_KEY`, `OAK_TOKEN`, `STITCH_API_KEY`)
-5. Log in with `pi` auth flows as needed (auth.json is not committed)
+4. Install the locked npm dependencies:
 
-## Notes
+   ```bash
+   npm install --prefix ~/.pi/agent/npm --legacy-peer-deps
+   ```
 
-- Subagents run via `pi-herdr-subagents` inside [herdr](https://herdr.dev) (`HERDR_ENV=1`). `pi-subagents` is deprecated/removed; its model config was migrated to `agent/pi-herdr-subagents.config.json`. Fields with no equivalent (fallbackModels, watchdog, oracle/delegate overrides) were dropped.
-- `agent/skills/` contains symlinks into `~/.agents/skills/` — that directory is a separate prerequisite and not part of this repo.
-- `web_search` (pi-web-access) is disabled for subagents: pi-herdr-subagents has no per-subagent extension loading, and `pi-web-access` is configured with `"extensions": []`. Researcher/context-builder agents rely on `ax` instead.
+   Pi can also install the packages listed in `agent/settings.json` on startup after the configuration is trusted.
+5. Authenticate the configured providers. The default requires ChatGPT/Codex login; the OpenCode Go entries require its provider credential.
+6. Set any MCP credentials you intend to use: `OAK_TOKEN`, `DELPHI_API_KEY`, and `STITCH_API_KEY`. Remove unavailable servers and unnecessary compatibility imports from `agent/mcp.json`.
+7. Install the skills you want under `~/.agents/skills`, or remove that path from `agent/settings.json`.
+8. Start Pi inside Herdr:
+
+   ```bash
+   herdr
+   pi
+   ```
+
+## Machine-specific choices
+
+- `externalEditor` is `zed --wait`; change or remove it if Zed is unavailable.
+- Local voice transcription uses the regenerable `parakeet-v3` download.
+- `paper` expects a local MCP server at `127.0.0.1:29979`.
+- The agent definitions use exact model IDs and may require both OpenAI Codex and OpenCode Go authentication.
+- Git packages are pinned to commits for reproducible installs. Update those refs deliberately.
+
+## Deliberately excluded
+
+See `.gitignore`. Important exclusions include:
+
+- credentials and provider state: `agent/auth.json`, `agent/models-store.json`;
+- sessions, memory, usage data, logs, SQLite databases, and interview state;
+- trust decisions, MCP cache/onboarding state, and migration backups;
+- `node_modules`, Pi-managed Git checkouts, and downloaded voice models.
+
+Never commit `agent/auth.json` or replace environment references in `agent/mcp.json` with literal tokens.
