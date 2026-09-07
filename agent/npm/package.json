@@ -3,6 +3,8 @@
   "private": true,
   "dependencies": {
     "@aliou/pi-guardrails": "^0.15.0",
+    "@jhnsml/pi-ax": "^0.1.0",
+    "@jhnsml/pi-bash-tools": "^0.1.0",
     "@observal/pi-insights": "^1.2.3",
     "@ogulcancelik/pi-herdr": "^0.4.0",
     "@plannotator/pi-extension": "^0.27.8",

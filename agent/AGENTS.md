@@ -16,6 +16,7 @@ These instructions apply to all pi sessions unless a project-level `AGENTS.md` o
 3. **Surgical Changes**
    - Touch only what you must.
    - Clean up only your own mess.
+   - Treat `/Users/yhn/.pi/agent/git*` as read-only: inspect and test there only; do not edit files under that path.
 
 4. **Goal-Driven Execution**
    - Define success criteria.

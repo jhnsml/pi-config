@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.85.0",
+  "lastChangelogVersion": "0.85.1",
   "enableSkillCommands": true,
   "retry": {
     "enabled": true,
@@ -35,7 +35,7 @@
   "theme": "catppuccin-frappe",
   "steeringMode": "one-at-a-time",
   "followUpMode": "one-at-a-time",
-  "hideThinkingBlock": true,
+  "hideThinkingBlock": false,
   "showCacheMissNotices": true,
   "enableInstallTelemetry": false,
   "defaultProjectTrust": "ask",
@@ -49,9 +49,9 @@
   "defaultModel": "gpt-5.6-sol",
   "defaultThinkingLevel": "medium",
   "modelThinkingLevels": {
-    "openai-codex/gpt-6-astra": "low",
+    "openai-codex/gpt-6-astra": "medium",
     "openai-codex/gpt-5.6-sol": "medium",
-    "openai-codex/gpt-5.6-luna": "high",
+    "openai-codex/gpt-5.6-luna": "xhigh",
     "opencode-go/deepseek-v4-flash": "high",
     "opencode-go/deepseek-v4-pro": "high",
     "opencode-go/grok-4.6": "high",
@@ -90,7 +90,7 @@
     "npm:pi-hermes-memory@0.8.2",
     "npm:pi-agent-browser-native@0.2.71",
     "npm:@observal/pi-insights@1.2.3",
-    "git:github.com/jhnsml/pi-ax@28dff3ea855e1f834096ec12f1276965cee6506f",
-    "git:github.com/jhnsml/pi-bash-tools@31a45d1dbaa620be916003e3a916fb87641f0db0"
+    "npm:@jhnsml/pi-ax",
+    "npm:@jhnsml/pi-bash-tools"
   ]
 }
