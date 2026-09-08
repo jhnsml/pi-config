@@ -37,3 +37,10 @@ models/
 
 # Broken machine-specific symlink
 agent/disabled-agent-browser-legacy
+
+
+## hermes
+.pi-hermes-locks*
+
+## mcp
+mcp-npx-cache*

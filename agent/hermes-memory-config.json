@@ -13,7 +13,7 @@
   "reviewTransport": "direct",
   "memoryOverflowStrategy": "auto-consolidate",
   "correctionDetection": true,
-  "consolidationTimeoutMs": 60000,
+  "consolidationTimeoutMs": 180000,
   "flushOnCompact": true,
   "flushOnShutdown": true,
   "flushMinTurns": 8,
