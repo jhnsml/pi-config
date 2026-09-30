@@ -4,7 +4,8 @@
       "url": "https://delphi.headout.com/tools/mcp",
       "headers": {
         "Authorization": "!printf 'Bearer '; security find-generic-password -a \"$USER\" -s pi-mcp-delphi -w"
-      }
+      },
+      "exposure": "codemode"
     },
     "Framelink_Figma_MCP": {
       "command": "npx",
@@ -12,8 +13,10 @@
       "env": {
         "FIGMA_API_KEY": "!security find-generic-password -a \"$USER\" -s pi-mcp-framelink-figma -w"
       },
-      "directTools": ["get_figma_data"]
+      "exposure": "codemode",
+      "toolExposure": {
+        "get_figma_data": "direct"
+      }
     }
-  },
-  "imports": ["cursor", "claude-code", "claude-desktop"]
+  }
 }
